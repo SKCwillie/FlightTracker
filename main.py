@@ -4,7 +4,7 @@ import time
 # Downtown Kansas City Airport
 LAT = 39.12587
 LON = -94.58754
-DIST = 16000
+DIST = 5000
 PAUSE = 30
 
 fr = FlightRadar24API()
@@ -30,8 +30,8 @@ def print_flight_info(last_flight):
                 print('Private Flight')
             try:
                 print(f'{flight_details["aircraft"]["model"]["text"]}')
-                print(f'To: {flight_details["airport"]["origin"]["name"]}')
-                print(f'From: {flight_details["airport"]["destination"]["name"]}')
+                print(f'To: {flight_details["airport"]["origin"]["code"]["icao"]}')
+                print(f'From: {flight_details["airport"]["destination"]["code"]["icao"]}')
                 print(f'{flight.ground_speed}knts @ {flight.altitude}ft')
             except IndexError:
                 pass
