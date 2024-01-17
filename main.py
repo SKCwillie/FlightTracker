@@ -1,7 +1,7 @@
 from FlightRadar24 import FlightRadar24API
 import time
 
-#Downtown Kansas City Airport
+# Downtown Kansas City Airport
 LAT = 39.12587
 LON = -94.58754
 DIST = 16000
@@ -24,11 +24,17 @@ def print_flight_info(last_flight):
             return print_flight_info(last_flight)
         else:
             print('')
-            print(f'{flight_details["airline"]["name"]}')
-            print(f'{flight_details["aircraft"]["model"]["text"]}')
-            print(f'To: {flight_details["airport"]["origin"]["name"]}')
-            print(f'From: {flight_details["airport"]["destination"]["name"]}')
-            print(f'{flight.ground_speed}knts @ {flight.altitude}ft')
+            try:
+                print(f'{flight_details["airline"]["name"]}')
+            except IndexError:
+                print('Private Flight')
+            try:
+                print(f'{flight_details["aircraft"]["model"]["text"]}')
+                print(f'To: {flight_details["airport"]["origin"]["name"]}')
+                print(f'From: {flight_details["airport"]["destination"]["name"]}')
+                print(f'{flight.ground_speed}knts @ {flight.altitude}ft')
+            except IndexError:
+                pass
             last_flight = flight_id
             time.sleep(PAUSE)
             return print_flight_info(last_flight)
