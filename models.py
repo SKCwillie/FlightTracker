@@ -37,6 +37,7 @@ class Flight:
     def __repr__(self):
         if self.from_name:
             rep = f"""
+
             
             
 {self.model}
@@ -50,6 +51,7 @@ To: {self.to_icao} -- {self.to_region}
             return rep
         else:
             rep = f"""
+
             
             
 {self.model}
