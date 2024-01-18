@@ -3,6 +3,13 @@ from FlightRadar24 import FlightRadar24API
 fr = FlightRadar24API()
 
 
+def round_alt(alt):
+    if alt < 7000:
+        return alt
+    else:
+        return round(alt, -3)
+
+
 class Flight:
 
     def __init__(self, api_flight):
@@ -38,19 +45,22 @@ class Flight:
         if self.from_name:
             rep = f"""
 
+
+            
             
             
 {self.model}
 {self.airline}
 From: {self.from_icao} -- {self.from_region}
 To: {self.to_icao} -- {self.to_region}
-{self.ground_speed}kts @ {self.altitude:,}ft
+{self.ground_speed}kts @ {round_alt(self.altitude):,}ft
 
 
         """
             return rep
         else:
             rep = f"""
+
 
             
             
