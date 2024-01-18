@@ -4,8 +4,8 @@ fr = FlightRadar24API()
 
 
 def round_alt(alt):
-    if alt < 7000:
-        return alt
+    if alt < 3000:
+        return round(alt, -2)
     else:
         return round(alt, -3)
 
@@ -19,7 +19,7 @@ class Flight:
         self.callsign = details['identification']['callsign']
         self.model = details['aircraft']['model']['text']
         self.ground_speed = api_flight.ground_speed
-        self.altitude = api_flight.altitude
+        self.altitude = round_alt(api_flight.altitude)
 
         try:
             self.airline = details['airline']['name']
@@ -53,7 +53,7 @@ class Flight:
 {self.airline}
 From: {self.from_icao} -- {self.from_region}
 To: {self.to_icao} -- {self.to_region}
-{self.ground_speed}kts @ {round_alt(self.altitude):,}ft
+{self.ground_speed}kts @ {self.altitude:,}ft
 
 
         """
