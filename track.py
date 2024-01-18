@@ -1,7 +1,6 @@
 from models import Flight, fr
 import time
 
-
 # Downtown Kansas City Airport
 LAT = 39.12587
 LON = -94.58754
@@ -26,6 +25,10 @@ def print_flight(last_flight_id):
             return flight_id
 
 
-while True:
-    last_flight = print_flight(last_flight)
-    time.sleep(PAUSE)
+if __name__ == '__main__':
+    while True:
+        try:
+            last_flight = print_flight(last_flight)
+        except KeyError:
+            pass
+        time.sleep(PAUSE)
