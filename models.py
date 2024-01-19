@@ -48,9 +48,9 @@ class Flight:
 
             
             
-            
-{self.model}
-{self.airline}
+{self.airline}       
+{self.model}: 
+{self.callsign}
 From: {self.from_icao} -- {self.from_region}
 To: {self.to_icao} -- {self.to_region}
 {self.ground_speed}kts @ {self.altitude:,}ft
@@ -63,9 +63,9 @@ To: {self.to_icao} -- {self.to_region}
 
 
             
-            
+{self.airline}        
 {self.model}
-{self.airline}
+{self.callsign}
 {self.ground_speed}kts @ {self.altitude:,}ft
 
 
