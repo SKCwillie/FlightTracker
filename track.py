@@ -29,6 +29,7 @@ if __name__ == '__main__':
     while True:
         try:
             last_flight = print_flight(last_flight)
-        except KeyError:
+        except:
+            time.sleep(300)
             pass
         time.sleep(PAUSE)
